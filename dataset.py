@@ -8,7 +8,7 @@ data = json.load(file)
 
 df = pd.DataFrame.from_dict(data)
 
-df['Data da Compra'] = pd.to_datetime(df['Data da Compra'], format='%d%m%Y') # alterando o tipo de dado
+df['Data da Compra'] = pd.to_datetime(df['Data da Compra'], format='%d/%m/%Y') # alterando o tipo de dado
 
 # print(df['Data da Compra'])
 
