@@ -1,5 +1,6 @@
 import streamlit as st
 import plotly as px
+from utils import format_number
 
 from dataset import df
 
@@ -13,4 +14,9 @@ with aba1:
     st.dataframe(df)
 
 with aba2:
-    st.dataframe(df['receita'])
+    coluna1, coluna2 = st.columns(2)
+
+    with coluna1:
+        st.metric('Receita Total', format_number(df['Preço'].sum(), 'R$'))
+    with coluna2:
+        st.metric('Quantidade de Vendas', format_number(df.shape[0]))
