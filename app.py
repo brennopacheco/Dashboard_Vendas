@@ -1,8 +1,7 @@
 import streamlit as st
 import plotly as px
-from utils import format_number
-
 from dataset import df
+from utils import format_number
 
 st.set_page_config(layout='wide')
 
