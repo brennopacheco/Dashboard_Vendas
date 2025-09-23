@@ -1,3 +1,4 @@
 .gitigore
 .venv
 __pycache__/dataset.cpython-310.pyc
+data.ipynb
