@@ -30,4 +30,27 @@ with st.sidebar.expander('Data da Compra'):
         (df['Data da Compra'].min(),
         df['Data da Compra'].max())
     )
-st.dataframe(df)
+with st.sidebar.expander('Local da Compra'):
+    local_compra = st.multiselect(
+        'Seleciona o Local da Compra',
+        df['Local da compra'].unique(),
+        df['Local da compra'].unique()
+    )
+with st.sidebar.expander('Vendedor'):
+    vendedor = st.multiselect(
+        'Selecione o Vendedor',
+        df['Vendedor'].unique(),
+        df['Vendedor'].unique()
+    )
+
+query = '''
+`Categoria do Produto` in @categorias and \
+@preco[0] <= Preço <= @preco[1] and \
+@data_compra[0] <= `Data da Compra` <= @data_compra[1] and \
+`Local da compra` in @local_compra and \
+`Vendedor` in @vendedor
+'''
+
+filtro_dados = df.query(query)
+filtro_dados = filtro_dados[colunas]
+st.dataframe(filtro_dados)
