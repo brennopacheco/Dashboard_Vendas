@@ -26,4 +26,12 @@ df_rec_mensal = df.set_index('Data da Compra') \
 
 df_rec_mensal['Ano'] = df_rec_mensal['Data da Compra'].dt.year # Coletando o ano da coluna data
 df_rec_mensal['Mes'] = df_rec_mensal['Data da Compra'].dt.month_name() # Coletando o mês da coluna data
-print(df_rec_mensal)
+# print(df_rec_mensal)
+
+# 3 - Dataframe Receita por Categoria
+df_rec_categoria = df.groupby('Categoria do Produto')[['Preço']].sum().sort_values(by='Preço', ascending=False)
+
+
+# 4 - Criando Dataframe de Vendedores com colunas de [Vendedor, Soma Vendidos, Quantidade Vendidos]
+df_vendedores = pd.DataFrame(df.groupby('Vendedor')['Preço'].agg(['sum', 'count']))
+print(df_vendedores.head())
