@@ -9,6 +9,16 @@ st.set_page_config(layout='wide')
 
 st.title("Dashboard de Vendas 🛒")
 
+st.sidebar.title('Filtro de Vendedores')
+
+filtro_vendedor = st.sidebar.multiselect(
+    'Vendedores',
+    df['Vendedor'].unique()
+    )
+
+if filtro_vendedor:
+    df = df[df['Vendedor'].isin(filtro_vendedor)]
+
 aba1, aba2, aba3 = st.tabs(['Dataset', 'Receita', 'Vendedores'])
 
 with aba1:
