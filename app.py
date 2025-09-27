@@ -3,7 +3,7 @@ import plotly as px
 from dataset import df
 from utils import format_number
 from graficos import grafico_map_estado, grafico_rec_mensal, grafico_rec_estado, \
-    grafico_rec_categoria, grafico_rec_vendedores
+    grafico_rec_categoria, grafico_rec_vendedores, grafico_vendas_vendedores
 
 st.set_page_config(layout='wide')
 
@@ -31,5 +31,8 @@ with aba3:
 
     with coluna1:
         st.plotly_chart(grafico_rec_vendedores, use_container_width=True)
+
+    with coluna2:
+        st.plotly_chart(grafico_vendas_vendedores, use_container_width=True)
 
     

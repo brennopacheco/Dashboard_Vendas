@@ -45,5 +45,15 @@ grafico_rec_vendedores = px.bar(
     x='sum',
     y=df_vendedores[['sum']].sort_values(by='sum', ascending=False).head().index,
     text_auto=True,
-    title='Top Vendedores por Receita'
+    title='Top Vendedores por Receita',
+    labels={"sum": "Total Vendido em R$", "y": "Vendedor"}  # <- muda os nomes dos eixos
+)
+
+grafico_vendas_vendedores = px.bar(
+    df_vendedores[['count']].sort_values(by='count', ascending=False).head(5),
+    x='count',
+    y=df_vendedores[['count']].sort_values(by='count', ascending=False).head().index,
+    text_auto=True,
+    title='Top Vendas',
+    labels={"count": "Quantidade de Vendas", "y": "Vendedor"}  # <- muda os nomes dos eixos
 )
