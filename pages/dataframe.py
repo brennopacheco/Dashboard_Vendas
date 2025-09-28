@@ -76,5 +76,5 @@ with coluna2:
         data=convert_cvs(filtro_dados),
         file_name=nome_arquivo,
         mime='text/csv',
-        on_click=mensagem_sucesso
+        on_click=mensagem_sucesso()
     )
