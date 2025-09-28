@@ -1,5 +1,7 @@
 from dataset import df
 import pandas as pd
+import streamlit as st
+import time
 
 def format_number(value, prefix=''):
     for unit in ['', 'mil']:
@@ -35,3 +37,16 @@ df_rec_categoria = df.groupby('Categoria do Produto')[['Preço']].sum().sort_val
 # 4 - Criando Dataframe de Vendedores com colunas de [Vendedor, Soma Vendidos, Quantidade Vendidos]
 df_vendedores = pd.DataFrame(df.groupby('Vendedor')['Preço'].agg(['sum', 'count']))
 print(df_vendedores.head())
+
+# 5 - Função para converter arquivo csv
+@st.cache_data
+def convert_cvs(df):
+    return df.to_csv(index=False).encode('utf-8')
+
+def mensagem_sucesso():
+    success = st.success(
+        'Arquivo baixado com sucesso',
+        icon='✅'
+    )
+    time.sleep(3)
+    success.empty()
