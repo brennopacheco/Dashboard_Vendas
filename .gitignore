@@ -1,4 +1,5 @@
 .gitigore
 .venv
+**/.venv/
 __pycache__
 data.ipynb
